@@ -1,0 +1,30 @@
+//Creation de Base de donnee:
+CREATE DATABASE bibliotheque;
+
+//Creation du la table livres:
+CREATE TABLE livres (
+		id int(90) PRIMARY KEY  NOT NULL AUTO_INCREMENT,
+    	titre VARCHAR(250),
+    	auteur VARCHAR(250),
+    	status VARCHAR(250),
+    	quantite int(75) NOT NULL,
+    	ISBN VARCHAR(250));
+
+
+//Creation du la table bibliothecaires:
+CREATE TABLE bibliothecaires (
+		id int(90) PRIMARY KEY  NOT NULL AUTO_INCREMENT,
+    	nom VARCHAR(250) NOT NULL,
+    	motPass VARCHAR(250) NOT NULL);
+
+
+//Creation du la table emprinteurs:
+CREATE TABLE emprinteurs (
+		id int(90) PRIMARY KEY  NOT NULL AUTO_INCREMENT,
+    	nom VARCHAR(250) NOT NULL,
+    	cleEmprinteur VARCHAR(250) NOT NULL	
+);
+
+
+//Creation du la table livreEmprinter:
+CREATE TABLE livresEmprinter ( id int(90) PRIMARY KEY NOT NULL, dateEmprunt date, deteRetour date, idLivre int, idEmprunteur int, FOREIGN KEY(idLivre) REFERENCES livres(id), FOREIGN KEY(idEmprunteur) REFERENCES emprinteurs(id) );
